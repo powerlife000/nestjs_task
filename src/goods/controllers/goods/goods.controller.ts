@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { Good } from '../../entities/good.entity';
 import { GoodsService } from '../../services/goods/goods.service';
@@ -12,5 +12,24 @@ import { ApiUseTags } from '@nestjs/swagger';
 @ApiUseTags('goods')
 @Controller('goods')
 export class GoodsController implements CrudController<Good>{
-  constructor(public service: GoodsService){}
+  constructor(public service: GoodsService){} 
+  
+  @Get('presets')
+    index(): object {
+      const good = new Good();
+	  good.id = '';
+	  good.title = '';
+	  good.description = '';
+	  good.provider = '';
+	  good.manufacturer = '';
+	  good.category = '';
+	  good.manufacture_date = '';
+	  good.country = '';
+	  good.created_at = '';
+	  good.updated_at = '';
+	  console.log(good.toJSON());
+	  return good.toJSON();	  
+    }
+  
 }
+
