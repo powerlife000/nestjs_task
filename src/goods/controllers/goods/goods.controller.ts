@@ -1,5 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
-import { Crud, CrudController } from '@nestjsx/crud';
+import { Controller,
+  Get,
+  Body,
+  Param,
+  UseInterceptors 
+  } from '@nestjs/common';
+import { Crud,
+  CrudController,
+  Override,
+  CrudRequest,
+  ParsedRequest,
+  CrudRequestInterceptor,
+  ParsedBody
+  } from '@nestjsx/crud';
 import { Good } from '../../entities/good.entity';
 import { GoodsService } from '../../services/goods/goods.service';
 import { ApiUseTags } from '@nestjs/swagger';
@@ -11,10 +23,10 @@ import { ApiUseTags } from '@nestjs/swagger';
 })
 @ApiUseTags('goods')
 @Controller('goods')
-export class GoodsController implements CrudController<Good>{
-  constructor(public service: GoodsService){} 
+export class GoodsController implements CrudController<Good> {
+  constructor(public service: GoodsService){}
   
-  @Get('presets')
+  @Get('fields')
     index(): object {
       const good = new Good();
 	  good.id = '';
@@ -29,7 +41,9 @@ export class GoodsController implements CrudController<Good>{
 	  good.updated_at = '';
 	  console.log(good.toJSON());
 	  return good.toJSON();	  
-    }
-  
+    } 
+
+	
 }
+
 

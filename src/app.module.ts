@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { GoodsModule } from './goods/goods.module';
+import { PresetsModule } from './presets/presets.module';
 import { Good } from './goods/entities/good.entity';
 import { withCache } from './orm.config';
 
@@ -18,7 +19,8 @@ import { withCache } from './orm.config';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-	GoodsModule
+	GoodsModule,
+	PresetsModule
   ],
   controllers: [AppController],
   providers: [AppService],

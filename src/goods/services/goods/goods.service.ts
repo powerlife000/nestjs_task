@@ -3,6 +3,7 @@ import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 import { Good } from '../../entities/good.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { UpdateResult, DeleteResult } from  'typeorm';
 
 
 @Injectable()
